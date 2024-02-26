@@ -31,7 +31,7 @@ app.post("/api/users/:_id/exercises", function(req, res) {
   resObj = {
     description: req.body.description,
     duration: parseInt(req.body.duration),
-    date: req.body.date ? req.body.date : new Date().toDateString()
+    date: req.body.date ? new Date(req.body.date).toDateString() : new Date().toDateString()
   }
   exercises[req.params._id].push(resObj)
   res.json({...users[req.params._id], ...resObj})
